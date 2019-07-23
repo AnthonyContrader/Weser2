@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "relationships": [
+        {
+            "relationshipName": "reading",
+            "otherEntityName": "reading",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "cf"
+        },
+        {
+            "relationshipName": "patology",
+            "otherEntityName": "patology",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "pato"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "age",
+            "fieldType": "Integer",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "dosage",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "posology",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "String",
+            "fieldValidateRules": []
+        }
+    ],
+    "changelogDate": "20190712102440",
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceImpl",
+    "entityTableName": "cure",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "microserviceName": "micro1"
+}
