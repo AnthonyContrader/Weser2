@@ -22,7 +22,14 @@ import { LoginDTO } from 'src/dto/logindto';
     }
 
  
-    
+    uth() {
+      const user = JSON.parse(localStorage.getItem('autoken')) as UserDTO;
+      if (user) {
+        return 'Bearer ' + user.authorities;
+      } else {
+        return '';
+      }
+    }
   
   
     userLogged(username: string) {

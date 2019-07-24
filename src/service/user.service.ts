@@ -25,7 +25,7 @@ export class UserService extends AbstractUService<UserDTO>{
      this.port = '8080';
   }
   auth() {
-    const user = JSON.parse(localStorage.getItem('currentUser')) as UserDTO;
+    const user = JSON.parse(localStorage.getItem('autoken')) as UserDTO;
     if (user) {
       return 'Bearer ' + user.authorities;
     } else {
