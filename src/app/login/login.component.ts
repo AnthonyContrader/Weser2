@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       this.service.userLogged(this.loginDTO.username).subscribe((user:UserDTO)=>{
 
       if (user != null) {
-        localStorage.setItem('AUTOKEN', JSON.stringify(user));
+        localStorage.setItem('currentUser', JSON.stringify(user));
         console.log(user.authorities);
 
         switch (user.authorities.toString()) {

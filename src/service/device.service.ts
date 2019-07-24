@@ -4,6 +4,7 @@ import { DeviceDTO } from 'src/dto/devicedto';
 import { HttpClient } from '@angular/common/http';
 import { UserDTO } from 'src/dto/userdto';
 import { Observable } from 'rxjs';
+import { LoginDTO } from 'src/dto/logindto';
 
 /**
  * I service sono decorati da @Injectable. 
@@ -25,16 +26,8 @@ export class DeviceService extends AbstractService<DeviceDTO>{
        this.port = '8080';
     }
 
-    auth() {
-        const user = JSON.parse(localStorage.getItem('currentUser')) as UserDTO;
     
-        console.log(user.authorities + 'user');
-        if (user) {
-          return 'Bearer ' + user.authorities;
-        } else {
-          return '';
-        }
-      }
+    
 
       userLogged(username: string) {
         // console.log('qua: ', this.auth());
