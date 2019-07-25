@@ -1,23 +1,79 @@
-import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { element, by, browser } from "protractor";
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+describe('Protractor Demo App', function() {
+  var firstNumber = element(by.model('first'));
+  var secondNumber = element(by.model('second'));
+  var goButton = element(by.id('gobutton'));
+  var latestResult = element(by.binding('latest'));
+  var history = element.all(by.repeater('result in memory'));
 
-  beforeEach(() => {
-    page = new AppPage();
+  function add(a, b) {
+    firstNumber.sendKeys(a);
+    secondNumber.sendKeys(b);
+    goButton.click();
+  }
+
+  beforeEach(function() {
+    browser.get('http://juliemr.github.io/protractor-demo/');
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to SampleAngular!');
-  });
+  it('should have a history', function() {
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+    add(1, 2);
+    add(3, 4);
+
+    expect(history.last().getText()).toContain('1 + 2');
+
+    add(5, 6);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+    add(1, 2);
+    add(3, 4);
+
+    expect(history.count()).toEqual(0); // This is wrong!
   });
 });
