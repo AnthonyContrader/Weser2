@@ -1,11 +1,28 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
+ 
+  private credentias = {
+    username: 'admin ',
+    password: 'admin'
+  };
+
   navigateTo() {
-    return browser.get(browser.baseUrl) as Promise<any>;
+    return browser.get('/login');
   }
 
-  getTitleText() {
-    return element(by.css('app-root h1')).getText() as Promise<string>;
+  fillCredentials(credentias: any = this.credentias) {
+    element(by.css('[name="username"]')).sendKeys(credentias.username);
+    element(by.css('[name="password"]')).sendKeys(credentias.password);
+    //element(by.css('login(f)')).click();
+    element(by.id('buttonlogin')).click();
+  }
+
+  getPageTitleText() {
+    return element(by.tagName('app-admin-dashboard')).getText();
+  }
+
+  getErrorMessage() {
+    return element(by.css('.alert-danger')).getText();
   }
 }

@@ -1,79 +1,34 @@
-import { element, by, browser } from "protractor";
+import { AppPage } from './app.po';
 
-describe('Protractor Demo App', function() {
-  var firstNumber = element(by.model('first'));
-  var secondNumber = element(by.model('second'));
-  var goButton = element(by.id('gobutton'));
-  var latestResult = element(by.binding('latest'));
-  var history = element.all(by.repeater('result in memory'));
+import {browser,by,element,logging} from 'protractor';
 
-  function add(a, b) {
-    firstNumber.sendKeys(a);
-    secondNumber.sendKeys(b);
-    goButton.click();
-  }
+describe('protractor-tutorial - Login page', () => {
+  let page: AppPage;
+  let publicPage: AppPage;
 
-  beforeEach(function() {
-    browser.get('http://juliemr.github.io/protractor-demo/');
+  const wrongCredentias = {
+    username: 'test',
+    password: 'test'
+  };
+
+  beforeEach(() => {
+    page = new AppPage();
+    publicPage = new AppPage();
   });
 
-  it('should have a history', function() {
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-
-    add(1, 2);
-    add(3, 4);
-
-    expect(history.last().getText()).toContain('1 + 2');
-
-    add(5, 6);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-    add(1, 2);
-    add(3, 4);
-
-    expect(history.count()).toEqual(0); // This is wrong!
+  /*
+  it('when user trying to login with wrong credentials he should stay on “login” page and see error notification', () => {
+    page.navigateTo();
+    page.fillCredentials(wrongCredentias);
+    expect(page.getPageTitleText()).toEqual('work-in-progress');
+    expect(page.getErrorMessage()).toEqual('Username or password is incorrect');
   });
+  */
+
+  it('when login is successful — he should redirect to default “public” page', () => {
+    page.navigateTo();
+    page.fillCredentials();
+    //expect(publicPage.getPageTitleText()).toEqual('admin-dashboard');
+    expect(true).toBe(element(by.tagName('app-admin-dashboard')).isDisplayed());
+  })
 });
