@@ -132,7 +132,7 @@ export default class Header extends Component {
                   </li>
                   <li>
                     <a href="fake_url">
-                      <i className="fa fa-user text-red" /> You changed your username
+                      <i className="fa fa-user text-red" /> You changed your password
                     </a>
                   </li>
                 </ul>
@@ -217,16 +217,16 @@ export default class Header extends Component {
           {/* User Account: style can be found in dropdown.less */}
           <li className="dropdown user user-menu">
             <a href="fake_url" className="dropdown-toggle" data-toggle="dropdown">
-              <img src="dist/img/user2-160x160.jpg" className="user-image" alt="User Image" />
-              <span className="hidden-xs">Alexander Pierce</span>
+              <img src="dist/img/Tutor.png" className="user-image" alt="User Image" />
+              <span className="hidden-xs">Patrizia Genova</span>
             </a>
             <ul className="dropdown-menu">
               {/* User image */}
               <li className="user-header">
-                <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image" />
+                <img src="dist/img/Tutor.png" className="img-circle" alt="User Image" />
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  Patrizia Genova - Software Developer
+                  <small>Member since Nov. 2014</small>
                 </p>
               </li>
               {/* Menu Body */}
@@ -247,10 +247,10 @@ export default class Header extends Component {
               {/* Menu Footer*/}
               <li className="user-footer">
                 <div className="pull-left">
-                  <a href="fake_url" className="btn btn-default btn-flat">Profile</a>
+                  <a href="fake_url" className="btn btn-default btn-flat">Change Password</a>
                 </div>
                 <div className="pull-right">
-                  <a href="fake_url" className="btn btn-default btn-flat">Sign out</a>
+                  <a href="http://localhost:4200" className="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
