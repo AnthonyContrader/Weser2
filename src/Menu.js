@@ -10,10 +10,10 @@ export default class Menu extends Component {
       {/* Sidebar user panel */}
       <div className="user-panel">
         <div className="pull-left image">
-          <img src="dist/img/user2-160x160.jpg" className="img-circle" alt="User Image" />
+          <img src="dist/img/Tutor.jpg" className="img-circle" alt="User Image" />
         </div>
         <div className="pull-left info">
-          <p>Alexander Pierce</p>
+          <p>Patrizia Genova</p>
           <a href="#"><i className="fa fa-circle text-success" /> Online</a>
         </div>
       </div>
@@ -31,17 +31,18 @@ export default class Menu extends Component {
       {/* /.search form */}
       {/* sidebar menu: : style can be found in sidebar.less */}
       <ul className="sidebar-menu" data-widget="tree">
-        <li className="header">MAIN NAVIGATION</li>
+        <li className="header">DASHBOARD</li>
         <li className="active treeview menu-open">
           <a href="#">
-            <i className="fa fa-dashboard" /> <span>Dashboard</span>
+            <i className="fa fa-user" /> <span>TUTOR</span>
             <span className="pull-right-container">
               <i className="fa fa-angle-left pull-right" />
             </span>
           </a>
           <ul className="treeview-menu">
-            <li><a href="index.html"><i className="fa fa-circle-o" /> Dashboard v1</a></li>
-            <li className="active"><a href="index2.html"><i className="fa fa-circle-o" /> Dashboard v2</a></li>
+            <li><a href="index.html"><i className="fa fa-phone" /> Emergency Numbers</a></li>
+            <li className="active"><a href="index2.html"><i className="fa fa-credit-card" /> Payments</a></li>
+            <li className="active"><a href="index3.html"><i className="fa fa-plus-square" /> Cures</a></li>
           </ul>
         </li>
         <li className="treeview">
