@@ -17,6 +17,8 @@ from django.conf.urls import url, include
 from django.contrib.auth.models import User,Group
 from rest_framework import routers, serializers, viewsets
 from django.contrib import admin
+from weser.models import Entity
+from weser.models import Emergency
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -29,6 +31,16 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = Group
         fields = ['url', 'name']
 
+class EntitySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Entity
+        fields = ['url', 'username','password', 'authorities','email']
+
+class EmergencySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Emergency
+        fields = ['url', 'patient','number']
+
       
         
 # ViewSets define the view behavior.
@@ -40,12 +52,22 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
- 
+class EntityViewSet(viewsets.ModelViewSet):
+    queryset = Entity.objects.all()
+    serializer_class = EntitySerializer
+
+class EmergencyViewSet(viewsets.ModelViewSet):
+    queryset = Emergency.objects.all()
+    serializer_class = EmergencySerializer
+
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
+router.register(r'entities', EntityViewSet)
+router.register(r'emergencies', EmergencyViewSet)
+
 
 
 urlpatterns = [
