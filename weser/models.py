@@ -26,8 +26,38 @@ class Entity(models.Model):
     created_date = models.DateTimeField(
             default=timezone.now)
 
+    def __str__(self):
+        return self.username
+
 class Emergency(models.Model):
-    patient = models.ForeignKey('Entity', on_delete=models.CASCADE)
+    assistent = models.ForeignKey('Entity', on_delete=models.CASCADE)
     number = models.CharField(max_length=200)
     created_date = models.DateTimeField(
             default=timezone.now)
+
+    def __str__(self):
+        return self.assistent
+
+class Cure(models.Model):
+    tutor = models.ForeignKey('Entity', on_delete=models.CASCADE)
+    patient = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    quantity = models.CharField(max_length=200)
+    posology = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
+
+class Parameter(models.Model):
+    code = models.CharField(max_length=200)
+    cure = models.ForeignKey('Cure', on_delete=models.CASCADE)
+    device = models.ForeignKey('Entity', on_delete=models.CASCADE)
+    minpress = models.CharField(max_length=200)
+    maxpress = models.CharField(max_length=200)
+    mincir = models.CharField(max_length=200)
+    maxcir = models.CharField(max_length=200)
+    mintemp = models.CharField(max_length=200)
+    maxtemp = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.code

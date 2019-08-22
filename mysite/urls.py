@@ -19,6 +19,8 @@ from rest_framework import routers, serializers, viewsets
 from django.contrib import admin
 from weser.models import Entity
 from weser.models import Emergency
+from weser.models import Cure
+from weser.models import Parameter
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -39,7 +41,18 @@ class EntitySerializer(serializers.HyperlinkedModelSerializer):
 class EmergencySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Emergency
-        fields = ['url', 'patient','number']
+        fields = ['url', 'assistent','number']
+
+class CureSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Cure
+        fields = ['url', 'tutor','patient','name', 'quantity', 'posology']
+
+class ParameterSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Parameter
+        fields = ['url', 'code','cure','device', 'minpress', 'maxpress','mincir', 'maxcir','mintemp', 'maxtemp']
+
 
       
         
@@ -60,6 +73,14 @@ class EmergencyViewSet(viewsets.ModelViewSet):
     queryset = Emergency.objects.all()
     serializer_class = EmergencySerializer
 
+class CureViewSet(viewsets.ModelViewSet):
+    queryset = Cure.objects.all()
+    serializer_class = CureSerializer
+
+class ParameterViewSet(viewsets.ModelViewSet):
+    queryset = Parameter.objects.all()
+    serializer_class = ParameterSerializer
+
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -67,6 +88,8 @@ router.register(r'users', UserViewSet)
 router.register(r'groups', GroupViewSet)
 router.register(r'entities', EntityViewSet)
 router.register(r'emergencies', EmergencyViewSet)
+router.register(r'cures', CureViewSet)
+router.register(r'parameters', ParameterViewSet)
 
 
 
